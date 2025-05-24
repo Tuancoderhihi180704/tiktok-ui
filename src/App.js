@@ -53,15 +53,14 @@
 
 //   }
 
-
 //   return (
 //     <div className="app" style={{padding : '20px'}}>
-//       <input 
+//       <input
 //       value={name}
 //       placeholder="Nhập tên của bạn"
 //       onChange = {e => setName(e.target.value)}/>
 //       <br/>
-//       <input 
+//       <input
 //       value={email}
 //       placeholder="Nhập tên của bạn"
 //       onChange = {e => setEmail(e.target.value)}/>
@@ -73,7 +72,6 @@
 // export default App;
 
 // import {  useState } from "react";
-
 
 // const courses = [
 //   {
@@ -115,7 +113,7 @@
 //                checked={checked.includes(course.id)}
 //                onChange={() => handleChecked(course.id)}
 //              />
-//              {course.name}   
+//              {course.name}
 //           </div>
 
 //         ))}
@@ -126,7 +124,6 @@
 // }
 
 // export default App;
-
 
 // import {  useState } from "react";
 
@@ -164,8 +161,6 @@
 
 // export default App;
 
-
-
 // import {  useState } from "react";
 // import Content from "./Content";
 // function App(){
@@ -181,7 +176,6 @@
 
 // export default App;
 
-
 // import {  useState,useCallback } from "react";
 // import Content from "./Content";
 // function App(){
@@ -192,14 +186,12 @@
 //  return (
 //    <div className="app">
 //      <Content onIncrease={handleClickMe}/>
-//      <h3>{count}</h3> 
+//      <h3>{count}</h3>
 //    </div>
 //  )
 // }
 
 // export default App;
-
-
 
 // import {  useState,useCallback,useMemo,useRef } from "react";
 // import Content from "./Content";
@@ -251,7 +243,6 @@
 
 // export default App;
 
-
 // import {  useReducer } from "react";
 // import Content from "./Content";
 // const initState = 0;
@@ -265,7 +256,7 @@
 //       case DOWN_ACTION :
 //         return state - 1;
 //       default :
-//        throw new Error("Initvalid action");   
+//        throw new Error("Initvalid action");
 //    }
 // }
 // function App(){
@@ -282,7 +273,6 @@
 
 // export default App;
 
-
 // import ToDoApp from './Todo'
 
 // function App(){
@@ -293,7 +283,6 @@
 //     )
 // }
 // export default App;
-
 
 // import Content from "./Content/content";
 // import { useContext } from "react";
@@ -313,7 +302,6 @@
 // }
 // export default App;
 
-
 // import {}
 
 // import {useRef} from 'react'
@@ -328,7 +316,7 @@
 //         dispatch(actions.addToDoInput(todoInput));
 //         dispatch(actions.setToDoInput(''));
 //         inputRef.current.focus()
-//     } 
+//     }
 //     // console.log(todos);
 //     const handleDelete = () => {
 //        dispatch(actions.deleteToDoInput(todoInput));
@@ -361,8 +349,6 @@
 //     )
 // }
 // export default App;
-
-
 
 // import { useRef } from 'react'
 // // Import hook useRef để tạo tham chiếu đến component con
@@ -400,21 +386,21 @@
 // }
 
 // export default App;
-import { Routes, Route } from 'react-router-dom'
-import HomePage from './pages/Home'
-import NewPage from './pages/News'
-import ContactPage from './pages/Contact'
-import About from './About/About'
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/Home";
+import NewPage from "./pages/News";
+import ContactPage from "./pages/Contact";
+import About from "./About/About";
 function App() {
-    return (
-        <div className="app">
-            <About />
-            <Routes>
-                <Route path='/' element={<HomePage />} />
-                <Route path='/new' element={<NewPage />} />
-                <Route path='/contact' element={<ContactPage />} />
-            </Routes>
-        </div>
-    )
+  return (
+    <div className="app">
+      <About />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/new" element={<NewPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </div>
+  );
 }
-export default App
+export default App;
