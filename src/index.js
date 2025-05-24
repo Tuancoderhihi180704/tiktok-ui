@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 // import { ThemeStoreProvider } from './Content/ThemeContext';
 // import {BrowserGlobalStyles as Router} from 'react-router-dom'
 
-import GlobalStyles from './Component';
+import GlobalStyles from './Component/GlobalStyles';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // function emitCommit(id){
 //   setInterval(()=>{
