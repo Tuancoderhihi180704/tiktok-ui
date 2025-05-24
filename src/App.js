@@ -41,7 +41,7 @@
 
 //one way binding
 // import {  useState } from "react";
-  
+
 // function App() {
 //   const [name,setName] = useState('');
 //   const [email,setEmail] = useState('');
@@ -50,10 +50,10 @@
 //   // }
 //   const handleOnsubmit = () => {
 //       console.log({name,email});
-      
+
 //   }
 
-  
+
 //   return (
 //     <div className="app" style={{padding : '20px'}}>
 //       <input 
@@ -103,7 +103,7 @@
 //   }
 //   function handleOnSubmit(){
 //      console.log({ids : checked});
-     
+
 //   }
 //   return (
 //     <div className="app" style={{padding:'20px'}}>
@@ -117,7 +117,7 @@
 //              />
 //              {course.name}   
 //           </div>
-           
+
 //         ))}
 //         <button onClick={handleOnSubmit}>Register</button>
 //     </div>
@@ -135,7 +135,7 @@
 //   const [job,setJob] = useState('');
 //   const [jobs,setJobs] = useState(storgareJobs ?? []);
 //   const handleOnSubmit =()=>{
-     
+
 //      setJobs(prev =>{
 //        const newJob =  [...prev,job];
 //        const jsonJobs = JSON.stringify(newJob);
@@ -303,12 +303,12 @@
 // function App(){
 //     const context = useContext(ThemeContext)
 //     return(
-        
+
 //         <div>
 //             <button onClick={context.toggleTheme}>Toggle Theme</button>
 //             <Content/>
 //         </div>
-    
+
 //     )
 // }
 // export default App;
@@ -319,7 +319,7 @@
 // import {useRef} from 'react'
 // import { useStore,actions} from "./Store";
 // function App(){
-   
+
 //     const [state,dispatch] = useStore();
 //     const {todos,todoInput} = state;
 //     const inputRef = useRef()
@@ -338,7 +338,7 @@
 //     }
 //     return (
 //         <div>
-            
+
 //             <h1>Hello Anh em F8</h1>
 //             <input
 //               ref={inputRef}
@@ -389,7 +389,7 @@
 //             <h1>Hello Anh em F8</h1>
 //             <Video ref={videoRef}/>
 //             {/* Truyền ref từ cha xuống component con */}
-            
+
 //             <button onClick={handlePlay}>Play</button>
 //             {/* Khi bấm sẽ gọi play() trên ref */}
 
@@ -400,20 +400,20 @@
 // }
 
 // export default App;
-import { Routes ,Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/Home'
 import NewPage from './pages/News'
 import ContactPage from './pages/Contact'
 import About from './About/About'
-function App(){
+function App() {
     return (
         <div className="app">
-           <About/>
-           <Routes>
-              <Route path='/' element={<HomePage/>}/>
-              <Route path='/new' element={<NewPage/>}/>
-              <Route path='/contact' element={<ContactPage/>}/>
-           </Routes>
+            <About />
+            <Routes>
+                <Route path='/' element={<HomePage />} />
+                <Route path='/new' element={<NewPage />} />
+                <Route path='/contact' element={<ContactPage />} />
+            </Routes>
         </div>
     )
 }
