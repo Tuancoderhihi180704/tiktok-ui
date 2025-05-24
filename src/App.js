@@ -386,20 +386,12 @@
 // }
 
 // export default App;
-import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/Home";
-import NewPage from "./pages/News";
-import ContactPage from "./pages/Contact";
-import About from "./About/About";
+
 function App() {
   return (
     <div className="app">
-      <About />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/new" element={<NewPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
+        <h1>Hello</h1>
+      
     </div>
   );
 }

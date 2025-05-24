@@ -4,8 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import { ThemeStoreProvider } from './Content/ThemeContext';
-import {BrowserRouter as Router} from 'react-router-dom'
-import { StoreProvider } from './Store';
+// import {BrowserGlobalStyles as Router} from 'react-router-dom'
+
+import GlobalStyles from './Component';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // function emitCommit(id){
 //   setInterval(()=>{
@@ -21,9 +22,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // emitCommit(3)
 root.render(
   <React.StrictMode>
-    <Router>
+   <GlobalStyles>
      <App />
-    </Router> 
+   </GlobalStyles>
   </React.StrictMode>
 );
 
