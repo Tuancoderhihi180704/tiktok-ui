@@ -3,6 +3,8 @@
 
 :root {
   --primary: #070707;
+  --black: #000;
+  --text-color: #333;
   --default-layout-header-height:60px;
   --default-layout-width:1150px;
 }
@@ -20,4 +22,15 @@ body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.5rem;
   text-rendering: optimizeSpeed;
+    color: var(--text-color);
 }
+button,input,[tabindex]{
+ outline: none;
+ border: none;
+}
+
+a[href]{
+  color: var(--text-color);
+  text-decoration: none;
+}
+
