@@ -3,12 +3,15 @@ import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import logoTiktok from '~/img/tiktok.jpg';
 import Tippy from '@tippyjs/react/headless';
-import 'tippy.js/dist/tippy.css'; // optional
+import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faMagnifyingGlass,  faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Wrapper as PopperWrapper } from '~/Component/Popper';
 import AccoutItem from '~/Component/AccoutItem';
+import Button from '~/Component/Button';
+
 const cx = classNames.bind(styles);
+
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
@@ -49,7 +52,10 @@ function Header() {
             </button>
           </div>
         </Tippy>
-        <div className={cx('action')}></div>
+        <div className={cx('action')}>
+          <Button text>Upload</Button>
+          <Button primary>Login</Button>
+        </div>
       </div>
     </header>
   );
