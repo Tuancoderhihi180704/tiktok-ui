@@ -11,6 +11,10 @@
   border-radius: 0;
   justify-content: flex-start;
   line-height: 1.8rem;
+  font-weight: 600;
+  &.seprate {
+   border-top: 1px solid rgba(22, 24, 35, 0.03); 
+  }
   &:hover {
     background-color: rgba(22, 24, 35, 0.03);
   }
