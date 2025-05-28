@@ -5,13 +5,28 @@ import logoTiktok from '~/img/tiktok.jpg';
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass,  faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion, faCircleXmark, faEarthAsia, faEllipsisVertical, faKeyboard, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Wrapper as PopperWrapper } from '~/Component/Popper';
 import AccoutItem from '~/Component/AccoutItem';
 import Button from '~/Component/Button';
+import Menu from '~/Component/Popper/Menu';
 
 const cx = classNames.bind(styles);
-
+const MENU_ITEMS = [
+  {
+    icon: <FontAwesomeIcon icon={faEarthAsia}></FontAwesomeIcon>,
+    title: "EngLish"
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCircleQuestion}></FontAwesomeIcon>,
+    title: "FeedBack and help",
+    to : '/feeback'
+  },
+  {
+    icon: <FontAwesomeIcon icon={faKeyboard}></FontAwesomeIcon>,
+    title: "KeyBoard Shotcuts"
+  },
+]
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
@@ -55,6 +70,12 @@ function Header() {
         <div className={cx('action')}>
           <Button text>Upload</Button>
           <Button primary>Login</Button>
+          
+           <Menu items={MENU_ITEMS}>
+            <button className={cx('more-btn')}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </button>
+           </Menu>
         </div>
       </div>
     </header>
