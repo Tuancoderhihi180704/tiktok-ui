@@ -7,6 +7,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import avatarSon from '~/img/anhSon.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from '~/Component/Image';
 import {
   faCircleQuestion,
   faCircleXmark,
@@ -74,29 +75,28 @@ function Header() {
   };
   const userMenu = [
     {
-     icon : <FontAwesomeIcon icon={faUser}/>,
-     title: 'View Profile',
-     to: '/@son'
+      icon: <FontAwesomeIcon icon={faUser} />,
+      title: 'View Profile',
+      to: '/@son',
     },
     {
-     icon : <FontAwesomeIcon icon={faCoins}/>,
-     title: 'Get Coins',
-     to: '/coin'
+      icon: <FontAwesomeIcon icon={faCoins} />,
+      title: 'Get Coins',
+      to: '/coin',
     },
     {
-     icon : <FontAwesomeIcon icon={faGear} />,
-     title: 'Settings',
-     to: '/settings'
+      icon: <FontAwesomeIcon icon={faGear} />,
+      title: 'Settings',
+      to: '/settings',
     },
     ...MENU_ITEMS,
     {
-     icon : <FontAwesomeIcon icon={faSignOut} />,
-     title: 'Log out',
-     to: '/logout',
-     seprate: true
+      icon: <FontAwesomeIcon icon={faSignOut} />,
+      title: 'Log out',
+      to: '/logout',
+      seprate: true,
     },
-    
-  ]
+  ];
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
@@ -147,7 +147,9 @@ function Header() {
           )}
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img src={avatarSon} className={cx('user-avatar')} alt="Son"></img>
+              <Image src="nodhđhhdhdhd" className={cx('user-avatar')} alt="Son" 
+              // fallback="https://tse3.mm.bing.net/th?id=OIP.YJM43iRqLR-ozUp542gRuAHaHa&pid=Api&P=0&h=220"
+              />
             ) : (
               <button className={cx('more-btn')}>
                 <FontAwesomeIcon icon={faEllipsisVertical} />
