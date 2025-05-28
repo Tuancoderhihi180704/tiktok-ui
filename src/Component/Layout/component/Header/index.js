@@ -5,7 +5,15 @@ import logoTiktok from '~/img/tiktok.jpg';
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleQuestion, faCircleXmark, faEarthAsia, faEllipsisVertical, faKeyboard, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircleQuestion,
+  faCircleXmark,
+  faEarthAsia,
+  faEllipsisVertical,
+  faKeyboard,
+  faMagnifyingGlass,
+  faSpinner,
+} from '@fortawesome/free-solid-svg-icons';
 import { Wrapper as PopperWrapper } from '~/Component/Popper';
 import AccoutItem from '~/Component/AccoutItem';
 import Button from '~/Component/Button';
@@ -15,18 +23,33 @@ const cx = classNames.bind(styles);
 const MENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faEarthAsia}></FontAwesomeIcon>,
-    title: "EngLish"
+    title: 'EngLish',
+    children: {
+      title: 'Language',
+      data: [
+        {
+          type: 'language',
+          code: 'eng',
+          title: 'English',
+        },
+        {
+          type: 'language',
+          code: 'vn',
+          title: 'VietNamese',
+        },
+      ],
+    },
   },
   {
     icon: <FontAwesomeIcon icon={faCircleQuestion}></FontAwesomeIcon>,
-    title: "FeedBack and help",
-    to : '/feeback'
+    title: 'FeedBack and help',
+    to: '/feeback',
   },
   {
     icon: <FontAwesomeIcon icon={faKeyboard}></FontAwesomeIcon>,
-    title: "KeyBoard Shotcuts"
+    title: 'KeyBoard Shotcuts',
   },
-]
+];
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
@@ -34,6 +57,16 @@ function Header() {
       setSearchResult([]);
     }, 0);
   }, []);
+  const handleMenuChange = (menuitem) =>{
+   switch(menuitem.type){
+    case 'language':
+
+       break;
+    default:
+      
+   }
+   
+  }
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
@@ -70,12 +103,12 @@ function Header() {
         <div className={cx('action')}>
           <Button text>Upload</Button>
           <Button primary>Login</Button>
-          
-           <Menu items={MENU_ITEMS}>
+
+          <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
             <button className={cx('more-btn')}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>
-           </Menu>
+          </Menu>
         </div>
       </div>
     </header>
