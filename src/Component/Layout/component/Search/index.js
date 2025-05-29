@@ -4,7 +4,8 @@ import { Wrapper as PopperWrapper } from '~/Component/Popper';
 import AccoutItem from '~/Component/AccoutItem';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
-import Tippy from '@tippyjs/react/headless';
+
+import * as  searchService from '~/apiServices/searchService'
 import { useDebounce } from '~/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
@@ -16,20 +17,20 @@ function Search() {
   const [loading, setLoading] = useState(false);
   const forRef = useRef();
 
-  const debouncde = useDebounce(searchValue, 500);
+  const debounced = useDebounce(searchValue, 500);
   useEffect(() => {
-    if (!debouncde) {
+    if (!debounced) {
       setSearchResult([]);
       return;
     }
-    setLoading(true);
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debouncde)}&type=less`)
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setLoading(false);
-      });
-  }, [debouncde]);
+    const fetchApi = async () => {
+      setLoading(true);
+      const result = await searchService.search(debounced)
+      setSearchResult(result);
+      setLoading(false)
+    }
+    fetchApi()
+  }, [debounced]);
   const handleClear = () => {
     setSearchValue('');
     setSearchResult([]);
@@ -62,11 +63,6 @@ function Search() {
           spellCheck={false}
           onChange={(e) => setSearchValue(e.target.value)}
           onFocus={() => setShowReSult(true)}
-          onKeyDown={(e) => {
-            if (e.key === ' ') {
-              e.preventDefault();
-            }
-          }}
         />
         {!!searchValue && !loading && (
           <button className={cx('clear')} onClick={handleClear}>
