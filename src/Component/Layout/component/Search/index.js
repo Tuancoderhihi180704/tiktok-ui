@@ -4,6 +4,8 @@ import { Wrapper as PopperWrapper } from '~/Component/Popper';
 import AccoutItem from '~/Component/AccoutItem';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
+import Tippy from '@tippyjs/react/headless';
+import { useDebounce } from '~/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(styles);
@@ -13,19 +15,21 @@ function Search() {
   const [showResult, setShowReSult] = useState(true);
   const [loading, setLoading] = useState(false);
   const forRef = useRef();
+
+  const debouncde = useDebounce(searchValue, 500);
   useEffect(() => {
-    if (!searchValue) {
-      setSearchResult([])
+    if (!debouncde) {
+      setSearchResult([]);
       return;
     }
     setLoading(true);
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debouncde)}&type=less`)
       .then((res) => res.json())
       .then((res) => {
         setSearchResult(res.data);
         setLoading(false);
       });
-  }, [searchValue]);
+  }, [debouncde]);
   const handleClear = () => {
     setSearchValue('');
     setSearchResult([]);
