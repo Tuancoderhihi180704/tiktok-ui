@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import logoTiktok from '~/img/tiktok.jpg';
-import HeaderLessTippy from '@tippyjs/react/headless';
+import Search from '~/Component/Layout/component/Search';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import avatarSon from '~/img/anhSon.jpg';
@@ -10,22 +10,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from '~/Component/Image';
 import {
   faCircleQuestion,
-  faCircleXmark,
   faCloudUpload,
   faCoins,
   faEarthAsia,
   faEllipsisVertical,
   faGear,
+  faInbox,
   faKeyboard,
-  faMagnifyingGlass,
   faSignOut,
-  faSpinner,
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper as PopperWrapper } from '~/Component/Popper';
-import AccoutItem from '~/Component/AccoutItem';
 import Button from '~/Component/Button';
 import Menu from '~/Component/Popper/Menu';
+import { faTelegram } from '@fortawesome/free-brands-svg-icons';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -59,13 +56,9 @@ const MENU_ITEMS = [
   },
 ];
 function Header() {
-  const [searchResult, setSearchResult] = useState([]);
+
   const currentUser = true;
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 0);
-  }, []);
+  
   const handleMenuChange = (menuitem) => {
     switch (menuitem.type) {
       case 'language':
@@ -103,39 +96,24 @@ function Header() {
         <div className={cx('logo')}>
           <img src={logoTiktok} alt="Tittok" />
         </div>
-        <HeaderLessTippy
-          interactive
-          visible={searchResult.length > 0}
-          render={(attrs) => (
-            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx('search-title')}>Accounts</h4>
-                <AccoutItem />
-                <AccoutItem />
-                <AccoutItem />
-                <AccoutItem />
-              </PopperWrapper>
-            </div>
-          )}
-        >
-          <div className={cx('search')}>
-            <input placeholder="Search.........." spellCheck={true} />
-            <button className={cx('clear')}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-
-            <button className={cx('search-btn')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </div>
-        </HeaderLessTippy>
-        <div className={cx('action')}>
+        {/* Search */}
+        <Search/>
+          <div className={cx('action')}>
           {currentUser ? (
             <>
               <Tippy delay={[0, 200]} content="Upload Video" placement="bottom">
                 <button className={cx('action-btn')}>
                   <FontAwesomeIcon icon={faCloudUpload} />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <FontAwesomeIcon icon={faTelegram} />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <FontAwesomeIcon icon={faInbox} />
                 </button>
               </Tippy>
             </>
@@ -147,8 +125,11 @@ function Header() {
           )}
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <Image src="nodhđhhdhdhd" className={cx('user-avatar')} alt="Son" 
-              // fallback="https://tse3.mm.bing.net/th?id=OIP.YJM43iRqLR-ozUp542gRuAHaHa&pid=Api&P=0&h=220"
+              <Image
+                src="nodhđhhdhdhd"
+                className={cx('user-avatar')}
+                alt="Son"
+                // fallback="https://tse3.mm.bing.net/th?id=OIP.YJM43iRqLR-ozUp542gRuAHaHa&pid=Api&P=0&h=220"
               />
             ) : (
               <button className={cx('more-btn')}>
