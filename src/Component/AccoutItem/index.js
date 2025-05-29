@@ -2,20 +2,21 @@ import classNames from 'classnames/bind';
 import styles from './AccoutItem.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
-import avatarSon from '~/img/anhSon.jpg'
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
-function AccoutItem() {
+function AccoutItem({ data }) {
   return (
-    <div className={cx('wrapper')}>
-      <img className={cx('avatar')} src={avatarSon} alt="Son" />
+    // <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
+    <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
+      <img className={cx('avatar')} src={data.avatar} alt={data.full_name} />
       <div className={cx('infor')}>
         <h4 className={cx('name')}>
-          <span>Son Hueng Min</span>
-          <FontAwesomeIcon className={cx('check')} icon={faCircleCheck} />
+          <span>{data.full_name}</span>
+          {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCircleCheck} />}
         </h4>
-        <span className={cx('username')}>sonhuengmin7</span>
+        <span className={cx('username')}>{data.nickname}</span>
       </div>
-    </div>
+    </Link>
   );
 }
 
